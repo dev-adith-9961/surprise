@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Just For You 🎁</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffd1dc, #ffe6ef);
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #b30059;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #6b0036;
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    .gifts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 360px;
+      margin: auto;
+    }
+
+    .gift {
+      background: white;
+      border-radius: 20px;
+      padding: 20px 10px;
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+      cursor: pointer;
+      animation: float 3s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .gift:active {
+      transform: scale(0.95);
+    }
+
+    .gift span {
+      font-size: 2.5rem;
+      display: block;
+    }
+
+    .gift small {
+      display: block;
+      margin-top: 8px;
+      color: #b30059;
+      font-size: 0.85rem;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .next-btn {
+      margin-top: 40px;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d88;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255, 77, 136, 0.5);
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0.8; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>I wrapped these for you 🎀</h1>
+  <p>Each gift holds a little piece of us 💖</p>
+
+  <div class="gifts">
+    <div class="gift" onclick="openGift('photos.html')">
+      <span>🎁</span>
+      <small>Our Photos 📸</small>
+    </div>
+
+    <div class="gift" onclick="openGift('videos.html')">
+      <span>🎁</span>
+      <small>Our Videos 🎥</small>
+    </div>
+
+    <div class="gift" onclick="openGift('message.html')">
+      <span>🎁</span>
+      <small>For You 💌</small>
+    </div>
+
+    <div class="gift" onclick="openGift('memories.html')">
+      <span>🎁</span>
+      <small>Special Moments 💞</small>
+    </div>
+  </div>
+
+  <button class="next-btn" onclick="goNext()">Continue 💕</button>
+
+  <script>
+    function openGift(page) {
+      heartBurst();
+      setTimeout(() => {
+        window.location.href = page;
+      }, 500);
+    }
+
+    function goNext() {
+      window.location.href = "page4.html";
+    }
+
+    function heartBurst() {
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        heart.style.fontSize = (16 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+
+    // Continuous floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 700);
+  </script>
+
+</body>
+</html>

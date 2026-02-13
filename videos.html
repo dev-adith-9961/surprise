@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Little Movies 🎥</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #ffe6ef, #ffd1dc);
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #b30059;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #6b0036;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 420px;
+      margin: auto;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 8px 22px rgba(255, 105, 180, 0.3);
+    }
+
+    .video-card video {
+      width: 100%;
+      border-radius: 16px;
+      outline: none;
+    }
+
+    .caption {
+      font-size: 0.8rem;
+      color: #b30059;
+      margin-top: 8px;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0.8; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Little Movies 🎥</h1>
+  <p>Moments I never want to forget 💗</p>
+
+  <div class="videos">
+    <!-- Replace videos/video1.mp4 etc -->
+    <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_1.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">That moment still makes me smile 💕</div>
+    </div>
+
+    <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_2.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">Every second with you feels special 💞</div>
+    </div>
+
+    <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_3.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">I wish we had a thousand more like this 💖</div>
+    </div>
+
+      <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_4.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">I wish we had a thousand more like this 💖</div>
+    </div>
+
+      <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_5.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">That moment still makes me smile 💕</div>
+    </div>
+
+      <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_6.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">That moment still makes me smile 💕</div>
+    </div>
+
+      <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_7.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">That moment still makes me smile 💕</div>
+    </div>
+
+      <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_8.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">That moment still makes me smile 💕</div>
+    </div>
+
+      <div class="video-card">
+      <video controls playsinline>
+        <source src="videos/v_9.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="caption">That moment still makes me smile 💕</div>
+    </div>
+
+
+
+
+
+
+    
+  </div>
+
+  
+
+  <script>
+    // Floating hearts continuously
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+      heart.style.fontSize = (14 + Math.random() * 22) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 1000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You 💌</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffe6ef, #ffd1dc);
+      padding: 20px;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #b30059;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #6b0036;
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    .gifts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 380px;
+      margin: auto;
+    }
+
+    .gift {
+      background: #ffb6c1;
+      border-radius: 20px;
+      padding: 25px 10px;
+      box-shadow: 0 8px 22px rgba(255, 77, 136, 0.4);
+      cursor: pointer;
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .gift::before {
+      content: "🎀";
+      font-size: 1.8rem;
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .gift span {
+      font-size: 2.5rem;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Popup viewer */
+    .viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 182, 193, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+      padding: 20px;
+    }
+
+    .viewer img {
+      max-width: 90%;
+      max-height: 70%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .close {
+      margin-top: 20px;
+      padding: 10px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d88;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 136, 0.5);
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0.8; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>For You 💌</h1>
+  <p>I wrapped these little surprises with all my love 💗</p>
+
+  <div class="gifts">
+    <div class="gift" onclick="openGift('images/gift1.jpg')"><span>🎁</span></div>
+    <div class="gift" onclick="openGift('images/gift2.jpg')"><span>🎁</span></div>
+    <div class="gift" onclick="openGift('images/gift3.jpg')"><span>🎁</span></div>
+    <div class="gift" onclick="openGift('images/gift4.jpg')"><span>🎁</span></div>
+    <div class="gift" onclick="openGift('images/gift5.jpg')"><span>🎁</span></div>
+    <div class="gift" onclick="openGift('images/gift6.jpg')"><span>🎁</span></div>
+  </div>
+
+  <!-- Image Popup -->
+  <div class="viewer" id="viewer">
+    <img id="viewerImg">
+    <button class="close" onclick="closeGift()">Close 💖</button>
+  </div>
+
+  <script>
+    function openGift(src) {
+      document.getElementById("viewerImg").src = src;
+      document.getElementById("viewer").style.display = "flex";
+      heartBurst();
+    }
+
+    function closeGift() {
+      document.getElementById("viewer").style.display = "none";
+    }
+
+    function heartBurst() {
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        heart.style.fontSize = (14 + Math.random() * 22) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }
+    }
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 900);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Memories 📸</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #ffe6ef, #ffd1dc);
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #b30059;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #6b0036;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .photo-card {
+      background: white;
+      border-radius: 18px;
+      padding: 6px;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .photo-card:active {
+      transform: scale(0.95);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .caption {
+      font-size: 0.75rem;
+      color: #b30059;
+      margin-top: 6px;
+    }
+
+    /* Fullscreen viewer */
+    .viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 192, 203, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .viewer img {
+      max-width: 90%;
+      max-height: 70%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .viewer p {
+      margin-top: 15px;
+      color: #6b0036;
+      font-size: 0.9rem;
+    }
+
+    .close {
+      margin-top: 20px;
+      padding: 10px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d88;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 136, 0.5);
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0.8; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Memories 📸</h1>
+  <p>Every picture holds a heartbeat 💗</p>
+
+  <div class="gallery">
+    <!-- Replace images/photo1.jpg etc with your photos -->
+    <div class="photo-card" onclick="openViewer('images/p1.jpeg','One of my favorite moments 💕')">
+      <img src="images/p1.jpeg">
+      
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p2.jpeg','You make everything beautiful 😘')">
+      <img src="images/p2.jpeg">
+      
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p3.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p3.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p4.jpeg','My happy place is with you 🌸')">
+      <img src="images/p4.png">
+     
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p5.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p5.png">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p6.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p6.png">
+    
+    </div>
+
+        <div class="photo-card" onclick="openViewer('images/p7.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p7.png">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p8.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p8.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p9.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p9.jpeg">
+    
+    </div>
+
+      <div class="photo-card" onclick="openViewer('images/p10.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p10.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p11.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p11.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p12.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p12.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p13.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p13.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p14.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p14.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p15.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p15.jpeg">
+    
+    </div>
+
+    <div class="photo-card" onclick="openViewer('images/p16.jpeg','I wish I could relive this forever 💞')">
+      <img src="images/p16.jpeg">
+    
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+  <!-- Fullscreen Viewer -->
+  <div class="viewer" id="viewer">
+    <img id="viewerImg">
+    <p id="viewerText"></p>
+    <button class="close" onclick="closeViewer()">Close 💖</button>
+  </div>
+
+  <script>
+    function openViewer(src, text) {
+      document.getElementById("viewerImg").src = src;
+      document.getElementById("viewerText").textContent = text;
+      document.getElementById("viewer").style.display = "flex";
+      heartBurst();
+    }
+
+    function closeViewer() {
+      document.getElementById("viewer").style.display = "none";
+    }
+
+    function heartBurst() {
+      for (let i = 0; i < 10; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        heart.style.fontSize = (14 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }
+    }
+
+    // Continuous hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 900);
+  </script>
+
+</body>
+</html>

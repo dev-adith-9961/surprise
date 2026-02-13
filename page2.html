@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Just a Few Questions 💕</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffe6ef, #ffd1dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      width: 90%;
+      max-width: 360px;
+      border-radius: 25px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+      animation: fadeIn 1s ease;
+      z-index: 2;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #b30059;
+      margin-bottom: 15px;
+    }
+
+    .question {
+      font-size: 1rem;
+      color: #6b0036;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      background: #ff85a2;
+      color: white;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 15px rgba(255, 133, 162, 0.4);
+    }
+
+    .option:active {
+      transform: scale(0.95);
+    }
+
+    .reaction {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #b30059;
+      display: none;
+    }
+
+    .next-btn {
+      margin-top: 25px;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d88;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 136, 0.5);
+      display: none;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2 id="title">Just curious 💕</h2>
+    <div class="question" id="question"></div>
+
+    <div id="options"></div>
+
+    <div class="reaction" id="reaction"></div>
+
+    <button class="next-btn" id="nextBtn">Continue 💖</button>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "How much do you love me? 💘",
+        options: [
+          { text: "A lot 💕", reaction: "That already makes me smile 😊" },
+          { text: "Too much 😘", reaction: "Okay my heart just melted 💗" },
+          { text: "Infinite ♾️", reaction: "That’s the only correct answer 😍" }
+        ]
+      },
+      {
+        q: "What do I mean to you? 💞",
+        options: [
+          { text: "My safe place 🫶", reaction: "I promise to always be that 🥺" },
+          { text: "My favorite person 💖", reaction: "I feel so special now 😭💗" },
+          { text: "My forever 💍", reaction: "Forever sounds perfect with you 💕" }
+        ]
+      },
+      {
+        q: "One thing you love about us? 🌸",
+        options: [
+          { text: "Our memories 📸", reaction: "And there are many more to come 💗" },
+          { text: "Our bond 🫶", reaction: "Unbreakable, always 🥰" },
+          { text: "Everything 💞", reaction: "You just made my day 😘" }
+        ]
+      }
+    ];
+
+    let current = 0;
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const reactionEl = document.getElementById("reaction");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function loadQuestion() {
+      reactionEl.style.display = "none";
+      nextBtn.style.display = "none";
+      optionsEl.innerHTML = "";
+
+      const q = questions[current];
+      questionEl.textContent = q.q;
+
+      q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "option";
+        btn.textContent = opt.text;
+        btn.onclick = () => showReaction(opt.reaction);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function showReaction(text) {
+      reactionEl.textContent = text;
+      reactionEl.style.display = "block";
+      nextBtn.style.display = "block";
+      heartBurst();
+    }
+
+    nextBtn.onclick = () => {
+      current++;
+      if (current < questions.length) {
+        loadQuestion();
+      } else {
+        window.location.href = "page3.html";
+      }
+    };
+
+    function heartBurst() {
+      for (let i = 0; i < 10; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        heart.style.fontSize = (16 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>

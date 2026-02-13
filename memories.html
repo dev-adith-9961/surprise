@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Moments 💞</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffe6ef, #ffd1dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 420px;
+      width: 100%;
+      animation: fadeIn 2s ease;
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #b30059;
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      color: #6b0036;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .video-box {
+      background: white;
+      padding: 12px;
+      border-radius: 25px;
+      box-shadow: 0 12px 30px rgba(255, 105, 180, 0.4);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: #b30059;
+      font-style: italic;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Special Moments 💞</h1>
+    <p>This video holds a piece of my heart…</p>
+
+    <div class="video-box">
+      <!-- Replace with your long emotional video -->
+      <video controls playsinline>
+        <source src="videos/special.mp4" type="video/mp4">
+        Your browser does not support the video.
+      </video>
+    </div>
+
+    <div class="note">
+      Every second of this… is us 💗
+    </div>
+  </div>
+
+  <script>
+    // Slow floating hearts for emotional effect
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (10 + Math.random() * 6) + "s";
+      heart.style.fontSize = (14 + Math.random() * 20) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 16000);
+    }, 1500);
+  </script>
+
+</body>
+</html>
