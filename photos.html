@@ -219,7 +219,16 @@
 
 
 
+
   </div>
+  
+<br><br>
+
+<button class="close" onclick="goToPage3()">
+  Next Surprise 💌
+</button>
+
+
 
   <!-- Fullscreen Viewer -->
   <div class="viewer" id="viewer">
@@ -252,6 +261,11 @@
         setTimeout(() => heart.remove(), 8000);
       }
     }
+
+    function goToPage3() {
+  window.location.href = "page3.html";
+}
+
 
     // Continuous hearts
     setInterval(() => {

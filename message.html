@@ -134,6 +134,9 @@
     <div class="gift" onclick="openGift('images/gift5.jpg')"><span>🎁</span></div>
     <div class="gift" onclick="openGift('images/gift6.jpg')"><span>🎁</span></div>
   </div>
+<button class="close" onclick="goToPage3()">
+  Next Surprise 💌
+</button>
 
   <!-- Image Popup -->
   <div class="viewer" id="viewer">
@@ -164,7 +167,9 @@
         setTimeout(() => heart.remove(), 8000);
       }
     }
-
+        function goToPage3() {
+  window.location.href = "page3.html";
+}
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";

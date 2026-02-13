@@ -15,6 +15,18 @@
       font-family: 'Poppins', sans-serif;
     }
 
+        .close {
+      margin-top: 20px;
+      padding: 10px 26px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d88;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 136, 0.5);
+    }
+
     body {
       background: linear-gradient(180deg, #ffe6ef, #ffd1dc);
       min-height: 100vh;
@@ -165,9 +177,16 @@
     
   </div>
 
-  
+  <button class="close" onclick="goToPage3()">
+  Next Surprise 💌
+</button>
+
 
   <script>
+
+        function goToPage3() {
+  window.location.href = "page3.html";
+}
     // Floating hearts continuously
     setInterval(() => {
       const heart = document.createElement("div");
